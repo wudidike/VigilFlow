@@ -1,0 +1,257 @@
+[
+    {
+        "name": "SQL注入",
+        "regex": "(union\\s+select|drop\\s+table|insert\\s+into|select\\s+from|'--|;--|\\b(1=1|0=0)\\b)",
+        "severity": "Critical"
+    },
+    {
+        "name": "XSS攻击",
+        "regex": "(<script>|alert\\(|javascript:|onerror=|document\\.cookie)",
+        "severity": "High"
+    },
+    {
+        "name": "路径遍历",
+        "regex": "(\\.\\./|%2e%2e%2f|\\\\.\\\\.\\\\)",
+        "severity": "High"
+    },
+    {
+        "name": "反序列化攻击",
+        "regex": "(__reduce__|ObjectInputStream|readObject|pickle\\s*\\.loads?)",
+        "severity": "Critical"
+    },
+    {
+        "name": "敏感文件访问",
+        "regex": "(/etc/passwd|\\/etc\\/passwd)",
+        "severity": "High"
+    },
+    {
+        "name": "命令执行",
+        "regex": "(cmd=|exec=|command=|cmd\\.exe|/bin/bash)",
+        "severity": "Critical"
+    },
+    {
+    "name": "CORS跨域漏洞",
+    "regex": "^(?:GET|POST)\\s+[^\\s]+\\s+HTTP/\\d+\\.\\d+\\nHost:\\s*([^\\s\\n]+).*\\nOrigin:\\s*(?:https?://)?([^\\s\\n/]+)",
+    "severity": "Critical"
+    },
+    {
+        "name": "SSRF漏洞",
+        "regex": "(url=.*(127\\.0\\.0\\.1|localhost|metadata))",
+        "severity": "High"
+    },
+    {
+        "name": "HTTP走私攻击",
+        "regex": "(Transfer-Encoding:\\s*chunked|Content-Length:\\s*[0-9]+)",
+        "severity": "High"
+    },
+    {
+        "name": "Fastjson反序列化",
+        "regex": "(\"@type\"\\s*:\\s*\"(java|com\\.sun\\.))",
+        "severity": "Critical"
+    },
+    {
+        "name": "Shiro反序列化",
+        "regex": "(rememberMe=[A-Za-z0-9+/=]{4,})",
+        "severity": "Critical"
+    },
+    {
+        "name": "Log4j2漏洞利用",
+        "regex": "(\\$\\{jndi:(ldap|rmi|dns)://)",
+        "severity": "Critical"
+    },
+    {
+        "name": "SQL注入（时间盲注）",
+        "regex": "(T\\(java\\.lang\\.Runtime\\$)",
+        "severity": "Critical"
+    },
+    {
+        "name": "NoSQL注入",
+        "regex": "(\\$ne\\s*:\\s*\\d|\\$where\\s*:)", 
+        "severity": "Critical"
+    },
+    {
+        "name": "XPath注入",
+        "regex": "(ancestor-or-self|following-sibling)", 
+        "severity": "High"
+    },
+    {
+        "name": "模板注入（SSTI）",
+        "regex": "(\\{\\{.*\\}\\}|\\$\\{.*\\}|<%=.*%>)",
+        "severity": "Critical"
+    },
+    {
+        "name": "LDAP注入",
+        "regex": "(\\|\\||\\(\\$\\s*=\\s*|\\$\\s*!)",
+        "severity": "High"
+    },
+    {
+        "name": "OS命令注入（绕过检测）",
+        "regex": "(\\$\\(|\\`|\\|\\||%0a|%0d)",
+        "severity": "Critical"
+    },
+    {
+        "name": "表达式注入（SpEL）",
+        "regex": "(T\\(java\\.lang\\.Runtime\\$)",
+        "severity": "Critical"
+    },
+    {
+        "name": "HTTP头注入",
+        "regex": "(\\r\\n|%0d%0a)[a-zA-Z-]+:",
+        "severity": "High"
+    },
+    {
+        "name": "JWT密钥硬编码",
+        "regex": "(eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9)",
+        "severity": "Critical"
+    },
+    {
+        "name": "会话固定攻击",
+        "regex": "(jsessionid=[^;]+;\\s*jsessionid=)",
+        "severity": "High"
+    },
+    {
+        "name": "弱会话超时（>8小时）",
+        "regex": "(max-age=\\d{5,}|expires=.{20,}Z)",
+        "severity": "Medium"
+    },
+    {
+        "name": "凭证未加密传输",
+        "regex": "(password=[^&]+&|passwd=[^&]*)(?!https)",
+        "severity": "Critical"
+    },
+    {
+        "name": "OAuth重定向劫持",
+        "regex": "(redirect_uri=http://|%252f%252f)",
+        "severity": "High"
+    },
+    {
+        "name": "Cookie未设置HttpOnly",
+        "regex": "(Set-Cookie: [^;]*;\\s*(?!HttpOnly))",
+        "severity": "Medium"
+    },
+    {
+        "name": "任意文件上传（绕过检测）",
+        "regex": "(\\.phar$|\\.htaccess$|\\x00)",
+        "severity": "Critical"
+    },
+    {
+        "name": "Zip炸弹攻击",
+        "regex": "(\\b42\\.zip\\b|\\bdeflatetest\\b)",
+        "severity": "High"
+    },
+    {
+        "name": "XXE外部实体注入",
+        "regex": "(<!ENTITY.*SYSTEM\\s+[\"'](http|file):)",
+        "severity": "Critical"
+    },
+    {
+        "name": "SVN/Git泄露",
+        "regex": "(\\.svn/entries|\\.git/config)",
+        "severity": "Medium"
+    },
+    {
+        "name": "SSRF（云元数据）",
+        "regex": "(169\\.254\\.169\\.254|metadata\\.google)",
+        "severity": "Critical"
+    },
+    {
+        "name": "WebDAV配置错误",
+        "regex": "(PROPFIND|PROPPATCH) /",
+        "severity": "High"
+    },
+    {
+        "name": "Office宏漏洞利用",
+        "regex": "(vbaProject\\.bin|Auto_Open)",
+        "severity": "Critical"
+    },
+    {
+        "name": "PDF嵌入可执行文件",
+        "regex": "(/JavaScript|/EmbeddedFile)",
+        "severity": "High"
+    },
+    {
+        "name": "镜像文件篡改",
+        "regex": "(md5sum\\s*=\\s*[0-9a-f]{32})",
+        "severity": "High"
+    },
+    {
+        "name": "GraphQL注入",
+        "regex": "(__schema\\s*\\{|introspection\\s*\\{|query\\s*\\{[^}]*\\$)",
+        "severity": "High"
+    },
+    {
+        "name": "批量请求滥用",
+        "regex": "(&ids=\\d+(,\\d+){100,}|limit=1000)",
+        "severity": "High"
+    },
+    {
+        "name": "OAuth令牌泄露",
+        "regex": "(access_token=[a-zA-Z0-9-_.]{20,})",
+        "severity": "Critical"
+    },
+    {
+        "name": "Webhook未验签",
+        "regex": "(X-Hub-Signature: [a-f0-9]{7,40})",
+        "severity": "High"
+    },
+    {
+        "name": "API版本废弃",
+        "regex": "(/v1/|api-version=201[0-9]-)",
+        "severity": "Medium"
+    },
+    {
+        "name": "Kubernetes配置泄露",
+        "regex": "(/etc/kubernetes/pki|\\.kube/config)",
+        "severity": "Critical"
+    },
+    {
+        "name": "Docker逃逸利用",
+        "regex": "(/var/run/docker\\.sock|/proc/self/exe)",
+        "severity": "Critical"
+    },
+    {
+        "name": "服务网格配置错误",
+        "regex": "(istio-injection=enabled|mode: PERMISSIVE)",
+        "severity": "High"
+    },
+    {
+        "name": "Lambda函数持久化",
+        "regex": "(process\\.env\\.AWS_LAMBDA_)",
+        "severity": "High"
+    },
+    {
+        "name": "云存储桶公开访问",
+        "regex": "(x-amz-acl: public-read|storage\\.googleapis\\.com/[^/]+$)",
+        "severity": "High"
+    },
+    {
+        "name": "内存马注入（Java）",
+        "regex": "(javax\\.servlet\\.Filter|weblogic\\.servlet\\.)",
+        "severity": "Critical"
+    },
+    {
+        "name": "无文件攻击特征",
+        "regex": "(powershell\\s+-enc|certutil\\s+-decode)",
+        "severity": "Critical"
+    },
+    {
+        "name": "隐蔽信道通信",
+        "regex": "(DNS:\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}|ICMP\\s+type=8)",
+        "severity": "High"
+    },
+    {
+        "name": "Rootkit特征检测",
+        "regex": "(\\bknark\\.ko\\b|\\badorelx\\b)",
+        "severity": "Critical"
+    },
+    {
+        "name": "供应链攻击特征",
+        "regex": "(npm_config_https-proxy|pip\\.ini\\s*trusted-host)",
+        "severity": "High"
+    },
+    {
+        "name": "横向移动凭证窃取",
+        "regex": "(mimikatz\\s+privilege::debug|sekurlsa::logonpasswords)",
+        "severity": "Critical"
+    }
+]
